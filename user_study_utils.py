@@ -33,32 +33,3 @@ def print_header(remaining_size, bool_table_color=False):
               bcolors.ENDC + ".")
     print("=" * 50)
     print("")
-
-def case_sampling_SQLNet(K=100):
-    from SQLNet_model.sqlnet.utils import load_data
-    data_dir = "SQLNet_model/data/"
-    sql_data, table_data = load_data(data_dir + "test_tok.jsonl", data_dir + "test_tok.tables.jsonl")
-    size = len(sql_data)
-    print(size)
-    sampled_ids = []
-    while len(sampled_ids) < K:
-        id = random.choice(range(size))
-        if id in sampled_ids:
-            continue
-
-        question = sql_data[id]['question']
-        table_id = sql_data[id]['table_id']
-        headers = table_data[table_id]['header']
-
-        try:
-            print("question: {}\nheaders: {}".format(question, headers))
-            action = raw_input("Take or not?")
-            if action == 'y':
-                sampled_ids.append(id)
-                json.dump(sampled_ids, open(data_dir + "user_study_ids.json", "w"))
-        except:
-            pass
-
-
-if __name__ == "__main__":
-    case_sampling_SQLNet(100)
