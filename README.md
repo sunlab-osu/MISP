@@ -3,13 +3,13 @@
 This repository provides code implementations for the EMNLP'19 paper "[Model-based Interactive Semantic Parsing:
 A Unified Framework and A Text-to-SQL Case Study](http://web.cse.ohio-state.edu/~yao.470/paper/MISP_EMNLP19.pdf)".
 
-**IMPORTANT: The code implementation in this branch (`binary_q_v1`), which adopts a binary Q&A interaction, is released to reproduce the performance reported in our paper. A cleaner, better refactored version, which adopts a multi-choice Q&A interaction, can be found in branch `multichoice_q` and is more recommended.**
+**IMPORTANT: The code implementation in this branch (`emnlp`), which adopts a binary Q&A interaction, is released to reproduce the performance reported in our paper. A cleaner, better refactored version, which adopts a multi-choice Q&A interaction, can be found in branch `multichoice_q` and is more recommended.**
 
 ## 1. Introduction
 As a promising paradigm, _interactive semantic parsing_ has shown to improve both semantic parsing accuracy and user confidence in the results. To facilitate its research, we propose **Model-based Interactive Semantic Parsing (MISP)**, a unified framework that views the interactive semantic parsing problem as designing a _model-based_ intelligent agent. The following figures show an overview of MISP and its instantiation (**MISP-SQL**) for text-to-SQL parsing.
 
 <p align="center">
-<img src="https://github.com/LittleYUYU/MISP-private/blob/multichoice_q/MISP.png" alt="MISP framework" title="MISP framework" width="350" border="10"/> <img src="https://github.com/LittleYUYU/MISP-private/blob/multichoice_q/text2sql.png" alt="A case study of MISP on text-to-SQL parsing" title="A case study of MISP on text-to-SQL parsing" width="400" border="10"/>
+<img src="https://github.com/sunlab-osu/MISP/blob/multichoice_q/MISP.png" alt="MISP framework" title="MISP framework" width="350" border="10"/> <img src="https://github.com/sunlab-osu/MISP/blob/multichoice_q/text2sql.png" alt="A case study of MISP on text-to-SQL parsing" title="A case study of MISP on text-to-SQL parsing" width="400" border="10"/>
 </p>
 
 A MISP agent mains an **agent state** and has three major components:
@@ -18,7 +18,7 @@ A MISP agent mains an **agent state** and has three major components:
 * **Actuator**, which realizes the agent's action in a user-friendly way, e.g., by generating a natural language question.
 
 This repository contains the implementation of MISP-SQL when the base semantic parser is SQLNet [(Xu et al., 2017)](https://arxiv.org/pdf/1711.04436.pdf), SQLova [(Hwang et al., 2019)](https://arxiv.org/pdf/1902.01069.pdf) or SyntaxSQLNet [(Yu et al., 2018)](https://arxiv.org/pdf/1810.05237.pdf). However, the framework potentially can also be applied to other base semantic parsers. We provide two versions of implementations:
-* Branch `binary_q_v1`: A _non-refactored_ version supporting binary-choice Q&A interaction, which can be used to reproduce our EMNLP results. To use this version, please switch the branch by `git checkout binary_q_v1`.
+* Branch `emnlp`: A _non-refactored_ version supporting binary-choice Q&A interaction, which can be used to reproduce our EMNLP results. To use this version, please switch the branch by `git checkout emnlp`.
 * Branch `multichoice_q` (__default, recommended__): A _refactored_ version supporting multi-choice Q&A interaction. This is the default branch of this repository.
 
 Please cite our work if you use our implementation:
