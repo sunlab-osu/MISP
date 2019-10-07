@@ -1,0 +1,39 @@
+# Tagging logic
+# Note that different base parsers can have different tagging logics, depending on how their decoders work.
+# However, in most time the tagging order, e.g., WHERE_COL goes before WHERE_OP and WHERE_VAL, does not change.
+#
+#
+# Each col is a tuple of (tab_name, col_name, col_idx)
+# Similarly for agg, op, iuen
+#
+# ('O', ('root', None), 1.0,), ('IUEN', 'none', prob,)
+#
+# When it is 'intersect'/'union'/'except' in IUEN:
+# ('IUEN', 'intersect'/'union'/'except', prob,), <- here's the main sql-> ('O', '##END_NESTED##', 1.0, None)
+# <-followed by the nested sql to intersect/union/except with->
+#
+# SELECT COL:
+# (O, "select",), (SELECT_COL, col1,), (SELECT_COL, col2,), ..
+# For each col:
+# (SELECT_AGG, col1, agg1,), (SELECT_AGG, col1, agg2,), .. #note for SELECT_AGG, agg being "none_agg" will not be shown
+#
+# WHERE:
+# (O, "where",), (WHERE_COL, col1,), (WHERE_COL, col2,) .., (ANDOR, "and"/"or", col_names, andor_prob,)#when multiple cols selected
+# For each col:
+# (WHERE_OP, (col1,), op1,), (WHERE_OP, (col1,), op2,)
+# For each (col, op):
+# (WHERE_ROOTTERM, (col,), op, root/terminal,) for Spider or (WHERE_VAL, (col,), op, val_str) for WikiSQL
+#
+# GROUP:
+# (O, "groupBy",), (GROUP_COL, col1,), (GROUP_COL, col2,), ..
+# (GROUP_NHAV, "none_having",) #end of groupBy
+# or (O, "having",), (HAV_COL, col1), (HAV_COL, col2), ..
+# For each col:
+# (HAV_AGG, col, agg/none_agg,) (HAV_OP, (col, agg), op1,), (HAV_OP, (col, agg), op2,)
+# For each op:
+# (HAV_ROOTTERM, (col, agg), op, root/terminal,)
+#
+# ORDER:
+# (O, "orderBy",), (ORDER_COL, col1,), (ORDER_COL, col2,), ..
+# For each col:
+# (ORDER_AGG, col, agg/none_agg), (ORDER_DESC_ASC_LIMIT, (col, agg), desc_asc_limit, prob)
