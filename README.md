@@ -42,7 +42,7 @@ Our experiments involve three different base semantic parsers: SQLNet, SQLova an
 * Pytorch 0.2.0
 * Please follow [SQLNet's instruction](https://github.com/xiaojunxu/SQLNet#installation) to install other dependencies.
 
-Note: It is recommended to create a conda environment ([download](https://www.anaconda.com/distribution/), [usage](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)) to install the above packages. If you do so, you may put your environment name [here](https://github.com/LittleYUYU/MISP-private/blob/multichoice_q/interaction_SQLNet.sh#L3), i.e., `source activate ENV_NAME`.
+Note: It is recommended to create a conda environment ([download](https://www.anaconda.com/distribution/), [usage](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)) to install the above packages. If you do so, you may put your environment name [here](interaction_SQLNet.sh#L3), i.e., `source activate ENV_NAME`.
 
 #### Data preparation
 Please download the `.tar` file from [here](https://www.dropbox.com/s/rjaz5t3mnj84tpk/sources.tar?dl=0) and uncompress it under the folder `SQLNet_model`. 
@@ -58,7 +58,7 @@ bash interaction_SQLNet.sh
 * Python 3.6
 * Pytorch 1.0.1
 * Please follow [SQLova's instruction](https://github.com/naver/sqlova#requirements) to install other dependencies.
-Note: If you have created a new conda environment to install the above packages, please put its name [here](https://github.com/LittleYUYU/MISP-private/blob/multichoice_q/interaction_sqlova.sh#L3), i.e., `source activate ENV_NAME`.
+Note: If you have created a new conda environment to install the above packages, please put its name [here](interaction_sqlova.sh#L3), i.e., `source activate ENV_NAME`.
 
 #### Data preparation
 Please download the `.tar` file from [here](https://www.dropbox.com/s/p1q59bpzjyk0h5e/sources.tar?dl=0) and uncompress it under the folder `SQLova_model`. 
