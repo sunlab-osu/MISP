@@ -139,7 +139,7 @@ Our experiments involve three different base semantic parsers: SQLNet, SQLova an
 Note: It is recommended to create a conda environment ([download](https://www.anaconda.com/distribution/), [usage](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)) to install the above packages. If you do so, you may put your environment name [here](interaction_SQLNet.sh#L3), i.e., `source activate ENV_NAME`.
 
 #### Data preparation
-Please download the `.tar` file from [here](https://www.dropbox.com/s/rjaz5t3mnj84tpk/sources.tar?dl=0) and uncompress it under the folder `SQLNet_model`. 
+Please download the `.tar` file from [here](https://www.dropbox.com/s/rjaz5t3mnj84tpk/sources.tar?dl=0) and uncompress it under the folder `SQLNet_model`. This file has included necessary data as well as pretrained models.
 <!-- You should see the following file structure:
 ```
 |-- SQLNet_model
@@ -169,7 +169,7 @@ bash interaction_SQLNet.sh
 Note: If you have created a new conda environment to install the above packages, please put its name [here](interaction_sqlova.sh#L3), i.e., `source activate ENV_NAME`.
 
 #### Data preparation
-Please download the `.tar` file from [here](https://www.dropbox.com/s/p1q59bpzjyk0h5e/sources.tar?dl=0) and uncompress it under the folder `SQLova_model`. 
+Please download the `.tar` file from [here](https://www.dropbox.com/s/p1q59bpzjyk0h5e/sources.tar?dl=0) and uncompress it under the folder `SQLova_model`. This file has included necessary data as well as pretrained models.
 <!--You should see the following file structure:
 ```
 |-- SQLova_model
@@ -199,7 +199,7 @@ bash interaction_sqlova.sh
 (You can use the same environment as SQLNet for running SyntaxSQLNet).
 
 #### Data preparation
-Please download the `.tar` file from [here](https://www.dropbox.com/s/vi65ezm8k1j92zd/sources.tar?dl=0) and uncompress it under the folder `syntaxSQL`. Please also download and unzip the pretrained [Glove](https://nlp.stanford.edu/data/wordvecs/glove.42B.300d.zip), and put it as `syntaxSQL/glove/glove.42B.300d.txt`. 
+Please download the `.tar` file from [here](https://www.dropbox.com/s/vi65ezm8k1j92zd/sources.tar?dl=0) and uncompress it under the folder `syntaxSQL`. This file has included necessary data as well as pretrained models. Please also download and unzip the pretrained [Glove](https://nlp.stanford.edu/data/wordvecs/glove.42B.300d.zip), and put it as `syntaxSQL/glove/glove.42B.300d.txt`. 
 <!--You should see the following file structure:
 ```
 |-- syntaxSQL
