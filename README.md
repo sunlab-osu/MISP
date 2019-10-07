@@ -18,7 +18,7 @@ A MISP agent mains an **agent state** and has three major components:
 * **Actuator**, which realizes the agent's action in a user-friendly way, e.g., by generating a natural language question.
 
 This repository contains the implementation of MISP-SQL when the base semantic parser is SQLNet [(Xu et al., 2017)](https://arxiv.org/pdf/1711.04436.pdf), SQLova [(Hwang et al., 2019)](https://arxiv.org/pdf/1902.01069.pdf) or SyntaxSQLNet [(Yu et al., 2018)](https://arxiv.org/pdf/1810.05237.pdf). However, the framework potentially can also be applied to other base semantic parsers. We provide two versions of implementations:
-* Branch `binary_q_v1`: A _non-refactored_ version supporting binary-choice Q&A interaction, which can be used to reproduce our EMNLP results. To use this version, please switch the branch by `git checkout binary_q_v1`.
+* Branch `emnlp`: A _non-refactored_ version supporting binary-choice Q&A interaction, which can be used to reproduce our EMNLP results. To use this version, please switch the branch by `git checkout emnlp`.
 * Branch `multichoice_q` (__default, recommended__): A _refactored_ version supporting multi-choice Q&A interaction. This is the default branch of this repository.
 
 Please cite our work if you use our implementation:
