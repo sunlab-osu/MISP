@@ -12,13 +12,13 @@ As a promising paradigm, _interactive semantic parsing_ has shown to improve bot
 <img src="https://github.com/sunlab-osu/MISP/blob/multichoice_q/MISP.png" alt="MISP framework" title="MISP framework" width="350" border="10"/> <img src="https://github.com/sunlab-osu/MISP/blob/multichoice_q/text2sql.png" alt="A case study of MISP on text-to-SQL parsing" title="A case study of MISP on text-to-SQL parsing" width="400" border="10"/>
 </p>
 
-A MISP agent mains an **agent state** and has three major components:
+A MISP agent maintains an **agent state** and has three major components:
 * **World Model**, which perceives the environment signals and predicts the future based on the agent's internal knowledge.
 * **Error Detector**, which introspects its states and decides whether and where human intervention is needed.
 * **Actuator**, which realizes the agent's action in a user-friendly way, e.g., by generating a natural language question.
 
 This repository contains the implementation of MISP-SQL when the base semantic parser is SQLNet [(Xu et al., 2017)](https://arxiv.org/pdf/1711.04436.pdf), SQLova [(Hwang et al., 2019)](https://arxiv.org/pdf/1902.01069.pdf) or SyntaxSQLNet [(Yu et al., 2018)](https://arxiv.org/pdf/1810.05237.pdf). However, the framework potentially can also be applied to other base semantic parsers. We provide two versions of implementations:
-* Branch `emnlp`: A _non-refactored_ version supporting binary-choice Q&A interaction, which can be used to reproduce our EMNLP results. To use this version, please switch the branch by `git checkout emnlp`.
+* Branch `emnlp`: The _original_ version supporting binary-choice Q&A interaction, which can be used to reproduce our EMNLP results. To use this version, please switch the branch by `git checkout emnlp`.
 * Branch `multichoice_q` (__default, recommended__): A _refactored_ version supporting multi-choice Q&A interaction. This is the default branch of this repository.
 
 Please cite our work if you use our implementation:
