@@ -3,6 +3,13 @@
 This repository provides code implementations for the EMNLP'19 paper "[Model-based Interactive Semantic Parsing:
 A Unified Framework and A Text-to-SQL Case Study](http://web.cse.ohio-state.edu/~yao.470/paper/MISP_EMNLP19.pdf)".
 
+
+## Overview
+<p align="center">
+<img src="poster_overview-2.png" alt="MISP overview" title="Overview"/>
+</p>
+
+
 ## 1. Introduction
 As a promising paradigm, _interactive semantic parsing_ has shown to improve both semantic parsing accuracy and user confidence in the results. To facilitate its research, we propose **Model-based Interactive Semantic Parsing (MISP)**, a unified framework that views the interactive semantic parsing problem as designing a _model-based_ intelligent agent. The following figures show an overview of MISP and its instantiation (**MISP-SQL**) for text-to-SQL parsing.
 
