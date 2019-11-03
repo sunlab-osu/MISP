@@ -30,12 +30,19 @@ This repository contains the implementation of MISP-SQL when the base semantic p
 
 Please cite our work if you use our implementation:
 ```
-@InProceedings{yao2019model,
-  author =      "Ziyu Yao, Yu Su, Huan Sun, Wen-tau Yih",
-  title =       "Model-based Interactive Semantic Parsing: A Unified Framework and A Text-to-SQL Case Study",
-  booktitle =   "Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing",
-  year =        "2019",
-  address =     "Hong Kong, China"
+@inproceedings{yao-etal-2019-model,
+    title = "Model-based Interactive Semantic Parsing: A Unified Framework and A Text-to-{SQL} Case Study",
+    author = "Yao, Ziyu  and
+      Su, Yu  and
+      Sun, Huan  and
+      Yih, Wen-tau",
+    booktitle = "Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)",
+    month = nov,
+    year = "2019",
+    address = "Hong Kong, China",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/D19-1547",
+    pages = "5450--5461",
 }
 ```
 
