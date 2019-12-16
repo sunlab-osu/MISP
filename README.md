@@ -55,9 +55,9 @@ As an overview:
 
 As elaborated above, there are two "cornerstones" supporting the implementation:
 * **Hypthesis**: Any (partial) SQL query is an instance of the class [`Hypothesis`](MISP_SQL/utils.py#L71). A hypothesis mainly stores:
-  * `dec_seq`: The sequence of _decoding decisions_ generated while parsing. It allows us to pinpoint previous decisions and make changes (i.e., feedback incorporation).
+  * `dec_seq`: The sequence of _decoding decisions_ generated while parsing. It allows us to pinpoint previous decisions and make changes (i.e., feedback incorporation). *Note that the content in this sequence is specific to the base parser. One can have their own definition as long as it is easy to modify the decisions in feedback incorporation module.*
   * `dec_prefix`: The sequence of _prefix decoding decisions_ that the agent enforces the base parser to take. This is used in `"one-step" beam search` to keep the preceding decisions fixed. Its format is the same as `dec_seq`.
-  * `tag_seq`: The sequence of _semantic units_ generated while parsing. It records every generated SQL component as well as its context, which can be used by the [Question Generator](MISP_SQL/question_gen.py) to formulate natural language questions. 
+  * `tag_seq`: The sequence of _semantic units_ generated while parsing. It records every generated SQL component as well as its context, which can be used by the [Error Detector](MISP_SQL/error_detector.py) to identify potential mistakes and the [Question Generator](MISP_SQL/question_gen.py) to formulate natural language questions. See [MISP_SQL/tag_seq_logic.md](MISP_SQL/tag_seq_logic.md) for more details.
   * `logprob` and `length`: The log probability and length of the current (partial) SQL query.
   * `sql`: The generated SQL query in string.
 * **Semantic Unit**: A semantic unit defines the minimal unit that the system should interact on. A complete list of semantic units defined in the current framework can be found in [MISP_SQL/tag_seq_logic.md](MISP_SQL/tag_seq_logic.md). 
@@ -74,6 +74,7 @@ initial SQL: SELECT (Player) WHERE School/Club Team = westchester high
 
 logprob: -0.163793454746
 
+# Note that the following units should follow the framework's definitions.
 tag_seq: [('O', ('sc', None), 1.0, None), ('O', 'select', 1.0, None), # dummy tags
 ('SELECT_COL', (None, u'Player', 0), 0.9999038, 0), # picking a column "Player" (idx 0) in SELECT clause (probability=0.999)
 ('SELECT_AGG', (None, u'Player', 0), ('none_agg', 0), 0.99758995, 1), # do not pair any aggregator for "Player" (probability=0.998)
@@ -82,6 +83,7 @@ tag_seq: [('O', ('sc', None), 1.0, None), ('O', 'select', 1.0, None), # dummy ta
 ('WHERE_OP', ((None, u'School/Club Team', 5),), ('=', 0), 0.9999919, 3), # picking operator "=" for "School/Club Team"
 ('WHERE_VAL', ((None, u'School/Club Team', 5),), ('=', 0), ([0, 9, 10, 15], u'westchester high'), 0.8518489589551428, 4)] # WHERE School/Club Team = westchester high
 
+# Note that the following dec_seq is specific to SQLNet.
 dec_seq: [(('sc', None), 0), # for 'sc' (SELECT_COL), take column with idx=0 (i.e., "Player")
 (('sa', (0, u'Player')), 0), # for 'sa' (SELECT_AGG), take aggregator with idx=0 (i.e., "none_agg", empty aggregator)
 (('wc', None), 1, [5]), # for 'wc' (WHERE_COL), decide the number of conditions #cols=1 and take column with idx=5 (i.e., "School/Club Team")
