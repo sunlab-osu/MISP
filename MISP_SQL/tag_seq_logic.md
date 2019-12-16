@@ -22,8 +22,9 @@ When a semantic unit is deemed wrong, it will be passed to QG. QG generates a qu
 
 
 ## Semantic Unit Definitions
-Our framework already defines a comprehensive list of semantic units for common use, as shown below. 
-However, one can certinaly define extra units to meet their needs. We will give some examples.
+Our framework already defines a comprehensive list of semantic units for common use, as shown below. All _tags (e.g., SELECT_COL, OUTSIDE)_ are defined [here](MISP_SQL/utils.py#L6).
+
+Note that one can also define their own units to meet different needs. We will give some examples.
 
 ### Basics
 - Column `col`: `col = (tab_name, col_name, col_idx)` # `col_idx` is the index of this column in the column/action space. Such indices will be used to compare with the golden query (when simulating user feedback).
@@ -47,7 +48,7 @@ For Spider:
 ### GROUP BY and HAVING clause
 GROUP BY:
 - `(GROUP_COL, col, p(col), dec_idx)`
-(Optional) We also added the following definitions for SyntaxSQLNet:
+(Optional; model-specific) We also added the following definitions for SyntaxSQLNet:
 - `(GROUP_NHAV, "none_having", p("none_having"), dec_idx)` # SyntaxSQLNet has a particular decision on whether to add a HAVING clause; we thus define this unit so this decision can be validated by users as well.
 
 Note that, the following units about HAVING have to be placed after GROUP BY:
@@ -68,10 +69,10 @@ Note that, the following units about HAVING have to be placed after GROUP BY:
 ### Nested queries
 **Case 1:**
 Our framework allows generating questions for nested queries, such as `SELECT ... WHERE col1 = ( <- this is a nested query -> )`.
-However, one has to append a unit `('O', '##END_NESTED##', 1.0, None)` after completing a nested query:
+However, one has to append a unit `(OUTSIDE, '##END_NESTED##', 1.0, None)` after completing a nested query:
 ```
 <- here are units for the main sql-> .. (WHERE_OP, (col,), op, p(op), dec_idx),
-(WHERE_ROOTTERM, (col,), op, 'root', p('root'), dec_idx), <- here are units for the nested sql -> ('O', '##END_NESTED##', 1.0, None), 
+(WHERE_ROOTTERM, (col,), op, 'root', p('root'), dec_idx), <- here are units for the nested sql -> (OUTSIDE, '##END_NESTED##', 1.0, None), 
 <- here are units for the demaining main sql->
 ```
 
@@ -80,7 +81,7 @@ Nested queries can also happen to queries with Intersect/Union/Except.
 
 For models like SyntaxSQLNet which first decides `iuen` then generates the main or nested query, its `tag_seq` should look like:
 ```
-('IUEN', iuen, p(iuen), dec_idx), <- here are units for the main sql -> ('O', '##END_NESTED##', 1.0, None),
+('IUEN', iuen, p(iuen), dec_idx), <- here are units for the main sql -> (OUTSIDE, '##END_NESTED##', 1.0, None),
 <- followed by units for the nested sql ->
 ```
 
