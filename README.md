@@ -60,7 +60,7 @@ As elaborated above, there are two "cornerstones" supporting the implementation:
   * `tag_seq`: The sequence of _semantic units_ generated while parsing. It records every generated SQL component as well as its context, which can be used by the [Question Generator](MISP_SQL/question_gen.py) to formulate natural language questions. 
   * `logprob` and `length`: The log probability and length of the current (partial) SQL query.
   * `sql`: The generated SQL query in string.
-* **Semantic Unit/Segment**: A semantic unit/segment defines the minimal unit that the system should interact on. A complete list of semantic units used in the current system can be found [here](MISP_SQL/utils.py#L6). The rules/logics for recording is explained in [MISP_SQL/semantic_tag_logic.txt](MISP_SQL/semantic_tag_logic.txt). 
+* **Semantic Unit**: A semantic unit defines the minimal unit that the system should interact on. A complete list of semantic units defined in the current framework can be found in [MISP_SQL/tag_seq_logic.md](MISP_SQL/tag_seq_logic.md). 
 
 ### 2.1 Example
 NL input: Who are all of the players on the Westchester High School club team?
