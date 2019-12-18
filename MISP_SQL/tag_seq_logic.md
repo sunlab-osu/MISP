@@ -48,8 +48,9 @@ For Spider:
 ### GROUP BY and HAVING clause
 GROUP BY:
 - `(GROUP_COL, col, p(col), dec_idx)`
-(Optional; model-specific) We also added the following definitions for SyntaxSQLNet:
-- `(GROUP_NHAV, "none_having", p("none_having"), dec_idx)` # SyntaxSQLNet has a particular decision on whether to add a HAVING clause; we thus define this unit so this decision can be validated by users as well.
+- (Optional; model-specific) We also added the following definitions for SyntaxSQLNet:
+
+`(GROUP_NHAV, "none_having", p("none_having"), dec_idx)` # SyntaxSQLNet has a particular decision on whether to add a HAVING clause; we thus define this unit so this decision can be validated by users as well.
 
 Note that, the following units about HAVING have to be placed after GROUP BY:
 - `(HAV_COL, col, p(col), dec_idx)`
