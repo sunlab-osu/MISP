@@ -1,0 +1,47 @@
+# Tagging logic
+# Note that different base parsers can have different tagging logics, depending on how their decoders work.
+# However, in most time the tagging order, e.g., WHERE_COL goes before WHERE_OP and WHERE_VAL, does not change.
+# The following document uses the working mechanism of SQLNet/SQLova/SyntaxSQLNet to illustrate the tagging logic.
+# You can find an example in https://github.com/sunlab-osu/MISP#21-example
+#
+# col = (tab_name, col_name, col_idx)
+# agg = (agg_name, agg_idx) # agg_name in {'min', 'max', 'count', ..., "none_agg"}
+# op = (op_name, op_idx) # op_name in {'>', '<', ...}
+# iuen = (iuen_name, iuen_idx) # iuen_name in {'none', 'intersect', 'union', 'except'}
+# desc_asc_limit = ('asc'/'desc', True/False for limit)
+#
+# "dec_idx" refers to the position of this decision in the dec_seq (your decoding sequence).
+#
+# ('O', ('root', None), 1.0, None), ('IUEN', iuen, prob, dec_idx)
+#
+# When it is 'intersect'/'union'/'except' in iuen:
+# ('IUEN', iuen, prob, dec_idx), <- here's the main sql-> ('O', '##END_NESTED##', 1.0, None)
+# <-followed by the nested sql to intersect/union/except with->
+#
+# SELECT COL:
+# (O, "select", 1.0, dec_idx), (SELECT_COL, col1, prob1, dec_idx1), (SELECT_COL, col2, prob2, dec_idx2), ..
+# For each col:
+# (SELECT_AGG, col1, agg1, prob1 of agg1, dec_idx1 of agg1), (SELECT_AGG, col1, agg2, prob2 of agg2, dec_idx2 of agg2), ..
+#
+# WHERE:
+# (O, "where", prob of where clause, prob of #col, dec_idx),
+# (WHERE_COL, col1, prob1, dec_idx1), (WHERE_COL, col2, prob2, dec_idx2) ..,
+# (ANDOR, "and"/"or", [col1, col2, ..], andor_prob, dec_idx)#when multiple cols selected
+# For each col:
+# (WHERE_OP, (col1,), op1, prob1 of op1, dec_idx1), (WHERE_OP, (col1,), op2, prob2 of op2, dec_idx2)
+# For each (col, op):
+# (WHERE_ROOTTERM, (col,), op, 'root'/'terminal', prob, dec_idx) for Spider or (WHERE_VAL, (col,), op, (val_idx, val_str), prob, dec_idx) for WikiSQL
+#
+# GROUP:
+# (O, "groupBy", prob of group_by clause, prob of #col), (GROUP_COL, col1, prob1, dec_idx1), (GROUP_COL, col2, prob2, dec_idx2), ..
+# (GROUP_NHAV, "none_having", prob, dec_idx) #end of groupBy
+# or (O, "having", prob, dec_idx), (HAV_COL, col1, prob1, dec_idx1), (HAV_COL, col2, prob2, dec_idx2), ..
+# For each col:
+# (HAV_AGG, col, agg, prob of agg, dec_idx of agg), (HAV_OP, (col, agg), op1, prob1 of op1, dec_idx1), (HAV_OP, (col, agg), op2, prob2 of op2, dec_idx2), ..
+# For each op:
+# (HAV_ROOTTERM, (col, agg), op, 'root'/'terminal', prob, dec_idx)
+#
+# ORDER:
+# (O, "orderBy", prob of order_by clause, dec_idx), (ORDER_COL, col1, prob1, dec_idx1), (ORDER_COL, col2, prob2, dec_idx2), ..
+# For each col:
+# (ORDER_AGG, col, agg, prob of agg, dec_idx), (ORDER_DESC_ASC_LIMIT, (col, agg), desc_asc_limit, prob of desc_asc_limit, dec_idx)
