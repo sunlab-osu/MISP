@@ -2,9 +2,9 @@
 
 ## 1. Description
 This folder contains implementation of **interactive EditSQL parser**, which uses EditSQL as a base semantic parser in our MISP framework:
-- Please follow [2. General Environment Setup](#2.-General-Environment-Setup) and set up the environment/data;
-- For testing interactive EditSQL on the fly (our EMNLP'19 setting), see [3. MISP with EditSQL](#3.-MISP-with-EditSQL);
-- For learning EditSQL from user interaction (our EMNLP'20 setting), see [4. Learning EditSQL from user interaction (EMNLP'20)](#4.-Learning-EditSQL-from-user-interaction-(EMNLP'20)).
+- Please follow [2. General Environment Setup](README.md#2-general-environment-setup) and set up the environment/data;
+- For testing interactive EditSQL on the fly (our EMNLP'19 setting), see [3. MISP with EditSQL](README.md#3-misp-with-editsql);
+- For learning EditSQL from user interaction (our EMNLP'20 setting), see [4. Learning EditSQL from user interaction (EMNLP'20)](README.md#4-learning-editsql-from-user-interaction-emnlp20).
 
 The implementation is adapted from [the EditSQL repository](https://github.com/ryanzhumich/editsql). 
 Please cite the following papers if you use the code:
@@ -97,8 +97,8 @@ Please download and uncompress the content as `EditSQL/logs_clean/ogs_spider_edi
 
 
 #### 4.1.3 Test the pretrained model
-To test the pretrained parser without user interaction, see [3.2 Model testing without interaction](#3.2-Model-testing-without-interaction).
-To test the pretrained parser with simulated user interaction, see [3.3 Model testing with simulated user interaction](#3.3-Model-testing-with-simulated-user-interaction).
+To test the pretrained parser without user interaction, see [3.2 Model testing without interaction](README.md#32-model-testing-without-interaction).
+To test the pretrained parser with simulated user interaction, see [3.3 Model testing with simulated user interaction](README.md#33-model-testing-with-simulated-user-interaction).
 Make sure `SETTING=online_pretrain_10p` is set in the scripts.
 
 ### 4.2 Interactive learning
