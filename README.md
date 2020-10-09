@@ -27,7 +27,7 @@ If you use the data or code from this repository, please cite the papers:
 
 ## 1. Overview
 <p align="center">
-<img src="overview.png" alt="MISP overview" title="Overview"/>
+<img src="overview.png" alt="MISP overview" title="Overview" width="800"/>
 </p>
 
 Natural language interfaces that allow users to query data and invoke services without programming have been identified as a key application of semantic parsing.
@@ -40,34 +40,31 @@ To advance this line of research, in [our EMNLP'19 paper](http://web.cse.ohio-st
 The following figures show an overview of MISP (left) and its instantiation **MISP-SQL** for text-to-SQL parsing (right).
 
 <p align="center">
-<img src="MISP.png" alt="MISP framework" title="MISP framework" width="350" border="10"/> <img src="text2sql.png" alt="A case study of MISP on text-to-SQL parsing" title="A case study of MISP on text-to-SQL parsing" width="400" border="10"/>
+<img src="MISP.png" alt="MISP framework" title="MISP framework" width="320" border="20"/> <img src="text2sql.png" alt="A case study of MISP on text-to-SQL parsing" title="A case study of MISP on text-to-SQL parsing" width="370" border="20"/>
 </p>
-<!--![MISP framework](MISP.png "MISP framework")
-![text-to-SQL](text2sql.png "A case study of MISP on text-to-SQL parsing")-->
 
 In our formulation, a MISP agent maintains an **agent state** and has three major components:
 * a **World Model**, which perceives the environment signals (e,g., user initial inputs or follow-up feedback) and interprets the world (e.g., user intents);
 * an **Error Detector**, which introspects the agent states and decides whether and where human intervention (e.g., clarification or user help) is needed;
 * an **Actuator**, which realizes the agent's action in a user-friendly way, e.g., by generating a natural language question to the user.
 
-**Generalization**: While we instantiate it for text-to-SQL parsing tasks, MISP can also be implemented for other logical forms. It also accepts various base semantic parsers in the back end (see [TODO](todo)).
+**Generalization**: While we instantiate it for text-to-SQL parsing tasks, MISP can also be implemented for other logical forms. It also accepts various base semantic parsers in the back end (see [1.1 Version Logs and Reproducibility](README.md#11-version-logs-and-reproducibility)).
 
 **Discoveries with MISP**
-- In [EMNLP'19](http://web.cse.ohio-state.edu/~yao.470/paper/MISP_EMNLP19.pdf), we demonstrate that, by plugging a base semantic parser into MISP in its test time, the parser's accuracy can be improved by a large margin with a reasonable number of user interactions;
+- In [EMNLP'19](http://web.cse.ohio-state.edu/~yao.470/paper/MISP_EMNLP19.pdf), we demonstrate that, by plugging a base semantic parser into MISP in its test time, the parser's accuracy can be improved substantially with a reasonable number of user interactions;
 - In [EMNLP'20](https://arxiv.org/pdf/2005.00689.pdf), we show that, after deployment, a semantic parser under MISP can autonomously improve itself by learning from user interaction feedback. This greatly saves _annotation effort_ and is _privacy preserving_ because no extra annotators or developers are involved.
 
 
 ### 1.1 Version Logs and Reproducibility
 We are keeping updating the repository. To encourage reproducibility, it currently contains three versions of MISP-SQL implementation:
 
-Branch | Description & Updates | Supported Base Semantic Parsers
------------- | ------------- | -------------
-`emnlp` | MISP-SQL with binary-choice Q&A interaction, which can be used to reproduce our EMNLP'19 experiments. | [SQLNet](https://arxiv.org/pdf/1711.04436.pdf), [SQLova](https://arxiv.org/pdf/1902.01069.pdf), [SyntaxSQLNet](https://arxiv.org/pdf/1810.05237.pdf)
-`multichoice_q` | MISP-SQL with multi-choice Q&A interaction. | [SQLNet](https://arxiv.org/pdf/1711.04436.pdf), [SQLova](https://arxiv.org/pdf/1902.01069.pdf), [SyntaxSQLNet](https://arxiv.org/pdf/1810.05237.pdf)
-`multichoice_q_v2` (**default, recommended**) | The latest version of MISP-SQL with multi-choice Q&A interaction. Updates include: <ul><li>Refactored `MISP_SQL` implementation;</li><li>New question templates;</li><li>Implementation of interactive learning algorithms for reproducing EMNLP'20 experiments.</li></ul> | [SQLova](https://arxiv.org/pdf/1902.01069.pdf), [EditSQL](https://arxiv.org/pdf/1909.00786.pdf)
+Date | Branch | Description & Updates | Supported Base Semantic Parsers
+------------ | ------------ | ------------- | -------------
+Oct. 2019 |`emnlp` | MISP-SQL with binary-choice Q&A interaction, which can be used to reproduce our EMNLP'19 experiments. | [SQLNet](https://arxiv.org/pdf/1711.04436.pdf), [SQLova](https://arxiv.org/pdf/1902.01069.pdf), [SyntaxSQLNet](https://arxiv.org/pdf/1810.05237.pdf)
+Oct. 2019 |`multichoice_q` | MISP-SQL with multi-choice Q&A interaction. | [SQLNet](https://arxiv.org/pdf/1711.04436.pdf), [SQLova](https://arxiv.org/pdf/1902.01069.pdf), [SyntaxSQLNet](https://arxiv.org/pdf/1810.05237.pdf)
+Oct. 2020 |`multichoice_q_v2` (**default, recommended**) | The latest version of MISP-SQL with multi-choice Q&A interaction. Updates include: <ul><li>Refactored `MISP_SQL` implementation;</li><li>Updated question templates;</li><li>Implementation of interactive learning algorithms for reproducing EMNLP'20 experiments.</li></ul> | [SQLova](https://arxiv.org/pdf/1902.01069.pdf), [EditSQL](https://arxiv.org/pdf/1909.00786.pdf)
 
-
-Please contact us if you have any questions in using our framework!
+To switch to different branches, please try `git checkout branch_name`. Contact us if you have any questions in using our framework!
 
 
 ## 2. System Architecture
