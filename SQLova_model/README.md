@@ -2,9 +2,9 @@
 
 ## 1. Description
 This folder contains implementation of **interactive SQLova parser**, which uses SQLova as a base semantic parser in our MISP framework:
-- Please follow [2. General Environment Setup](#2.-General-Environment-Setup) and set up the environment/data;
-- For testing interactive SQLova on the fly (our EMNLP'19 setting), see [3. MISP with SQLova (EMNLP'19)](#3.-MISP-with-SQLova-(EMNLP'19));
-- For learning SQLova from user interaction (our EMNLP'20 setting), see [4. Learning SQLova from user interaction (EMNLP'20)](#4.-Learning-SQLova-from-user-interaction-(EMNLP'20)).
+- Please follow [2. General Environment Setup](README.md#2-general-environment-setup) and set up the environment/data;
+- For testing interactive SQLova on the fly (our EMNLP'19 setting), see [3. MISP with SQLova (EMNLP'19)](README.md#3-misp-with-sqlova-emnlp19);
+- For learning SQLova from user interaction (our EMNLP'20 setting), see [4. Learning SQLova from user interaction (EMNLP'20)](README.md#4-learning-sqlova-from-user-interaction-emnlp20).
 
 The implementation is adapted from [the SQLova repository](https://github.com/naver/sqlova). 
 Please cite the following papers if you use the code:
@@ -106,8 +106,8 @@ Please download and uncompress the folder via `tar -xvf initialization_checkpoin
 ```
 
 #### 4.1.3 Test the pretrained models
-To test the pretrained parser without user interaction, see [3.2 Model testing without interaction](#3.2-Model-testing-without-interaction).
-To test the pretrained parser with simulated user interaction, see [3.3 Model testing with simulated user interaction](#3.3-Model-testing-with-simulated-user-interaction).
+To test the pretrained parser without user interaction, see [3.2 Model testing without interaction](README.md#32-model-testing-without-interaction).
+To test the pretrained parser with simulated user interaction, see [3.3 Model testing with simulated user interaction](README.md#33-model-testing-with-simulated-user-interaction).
 Make sure the `SETTING` variable is set correctly.
 
 ### 4.2 Interactive learning
