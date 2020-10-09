@@ -4,7 +4,7 @@ source activate gpu-py3
 export CUDA_VISIBLE_DEVICES=0
 
 
-SETTING="_10p"
+SETTING="_10p" # set to empty string '' for full training set, '_10p' for using only 10% of training set
 
 GLOVE_PATH="EditSQL/word_emb/glove.840B.300d.txt" # you need to change this
 LOGDIR="EditSQL/logs_clean/logs_spider_editsql${SETTING}/pretraining"
