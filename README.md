@@ -170,4 +170,4 @@ Other classes, such as `MISP_SQL.error_detector.ErrorDetectorProbability` and `M
 ## 3. Learning Semantic Parsers from User Interaction
 In [our EMNLP'20 paper](https://arxiv.org/pdf/2005.00689.pdf), we study interactively learning semantic parsers from user interaction under the MISP framework. We present an annotation-efficient imitation learning algorithm. Compared with the traditional supervised approach which requires full expert annotations on every user question, our algorithm can train a semantic parser to a comparable performance level and meanwhile requires only 10% of the total annotations that the supervised approach needs.
 
-To reproduce the experimental results, please refer to [SQLova_model](SQLova_model/) and [EditSQL](EditSQL/) for details.
+To reproduce the experimental results, please refer to [SQLova_model README](SQLova_model/) and [EditSQL README](EditSQL/) for details.
