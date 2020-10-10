@@ -2,7 +2,7 @@
 
 ## 1. Description
 This folder contains implementation of **interactive EditSQL parser**, which uses EditSQL as a base semantic parser in our MISP framework:
-- Please follow [2. General Environment Setup](README.md#2-general-environment-setup) and set up the environment/data;
+- Please follow [2. General Environment Setup](#2-general-environment-setup) and set up the environment/data;
 - For testing interactive EditSQL on the fly (our EMNLP'19 setting), see [3. MISP with EditSQL](README.md#3-misp-with-editsql);
 - For learning EditSQL from user interaction (our EMNLP'20 setting), see [4. Learning EditSQL from user interaction (EMNLP'20)](README.md#4-learning-editsql-from-user-interaction-emnlp20).
 
