@@ -48,7 +48,7 @@ In our formulation, a MISP agent maintains an **agent state** and has three majo
 * an **Error Detector**, which introspects the agent states and decides whether and where human intervention (e.g., clarification or user help) is needed;
 * an **Actuator**, which realizes the agent's action in a user-friendly way, e.g., by generating a natural language question to the user.
 
-**Generalization**: While we instantiate it for text-to-SQL parsing tasks, MISP can also be implemented for other logical forms. It also accepts various base semantic parsers in the back end (see [1.1 Version Logs and Reproducibility](README.md#11-version-logs-and-reproducibility)).
+**Generalization**: While we instantiate it for text-to-SQL parsing tasks, MISP can also be implemented for other logical forms. It also accepts various base semantic parsers in the back end (see [1.1 Version Logs and Reproducibility](#11-version-logs-and-reproducibility)).
 
 **Discoveries with MISP**
 - In [EMNLP'19](http://web.cse.ohio-state.edu/~yao.470/paper/MISP_EMNLP19.pdf), we demonstrate that, by plugging a base semantic parser into MISP in its test time, the parser's accuracy can be improved substantially with a reasonable number of user interactions;
